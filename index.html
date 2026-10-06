@@ -44,13 +44,27 @@
 
     <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <h1>Doctormaxhsrooms</h1>
-      <h3>Mushrooms &amp; Plant Remedies</h3>
-      <div class="hero-buttons">
-        <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="hero-button telegram">Connect to Telegram</a>
-       
-    </div>
+   <div class="hero-content">
+  <h1>Doctormaxshrooms</h1>
+  <h3>Mushrooms &amp; Plant Remedies</h3>
+  <div class="hero-buttons">
+    <a 
+      href="https://t.me/DOCTORMAXSHROOMS" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="hero-button telegram"
+    >
+      Connect to Telegram
+    </a>
+
+    <a 
+      href="mailto:doctormaxshrooms@gmail.com?subject=Product%20Inquiry&body=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products." 
+      class="hero-button email"
+    >
+      Connect to Email
+    </a>
+  </div>
+</div>
   </section>
 
   <!-- ========== PRODUCT SECTION ========== -->
@@ -103,37 +117,60 @@
   </section>
 
   <!-- ========== POPUP / MODAL (General) ========== -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
-      <h3 id="modalTitle">How would you like to connect?</h3>
-      <p>Pick a platform and we'll take you there to chat about our products.</p>
+ <div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+    <h3 id="modalTitle">How would you like to connect?</h3>
+    <p>Pick a platform and we'll take you there to chat about our products.</p>
 
-      <div class="options">
-        <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
-          <span class="icon telegram">✈️</span>
-          <span class="text">
-            <span>Telegram</span>
-            <small>Fast, secure messaging</small>
-          </span>
-        </a>
-         <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
-          <span class="icon telegram">✈️</span>
-          <span class="text">
-            <span>Tikto</span>
-            <small>Fast, secure messaging</small>
-          </span>
-        </a>
-         <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
-          <span class="icon telegram">✈️</span>
-          <span class="text">
-            <span>Email</span>
-            <small>Fast, secure messaging</small>
-          </span>
-        </a>
-      </div>
+    <div class="options">
+
+      <!-- ===== Telegram ===== -->
+      <a 
+        href="https://t.me/DOCTORMAXSHROOMS" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="option-btn" 
+        data-platform="Telegram"
+      >
+        <span class="icon telegram">✈️</span>
+        <span class="text">
+          <span>Telegram</span>
+          <small>Fast, secure messaging</small>
+        </span>
+      </a>
+
+      <!-- ===== TikTok ===== -->
+      <a 
+        href="https://www.tiktok.com/@doctormaxshrooms" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="option-btn" 
+        data-platform="TikTok"
+      >
+        <span class="icon tiktok">🎵</span>
+        <span class="text">
+          <span>TikTok</span>
+          <small>Watch &amp; message us on TikTok</small>
+        </span>
+      </a>
+
+      <!-- ===== Email ===== -->
+      <a 
+        href="mailto:doctormaxshrooms@gmail.com?subject=Product%20Inquiry&body=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products." 
+        class="option-btn" 
+        data-platform="Email"
+      >
+        <span class="icon email">✉️</span>
+        <span class="text">
+          <span>Email</span>
+          <small>Send us a message directly</small>
+        </span>
+      </a>
+
     </div>
   </div>
+</div>
 
   <!-- ========== BUY MODAL (Product-specific) ========== -->
   <div class="modal-overlay" id="buyModalOverlay">
@@ -349,7 +386,6 @@
             alt="Organic Reishi Mushrooms"
             loading="lazy"
           >
-          <span class="scroll-tag">Best Seller</span>
         </div>
         <figcaption>
           <h4>Organic Reishi</h4>
@@ -365,7 +401,7 @@
             alt="Herbal Tea Blend"
             loading="lazy"
           >
-          <span class="scroll-tag new">New</span>
+          
         </div>
         <figcaption>
           <h4>Herbal Tea Blend</h4>
@@ -381,7 +417,7 @@
             alt="Lion's Mane Extract"
             loading="lazy"
           >
-          <span class="scroll-tag">Popular</span>
+         
         </div>
         <figcaption>
           <h4>Lion's Mane</h4>
@@ -412,7 +448,7 @@
             alt="Dried Lavender Bundle"
             loading="lazy"
           >
-          <span class="scroll-tag">Organic</span>
+          
         </div>
         <figcaption>
           <h4>Lavender Bundle</h4>
@@ -443,7 +479,7 @@
             alt="Natural Essential Oil"
             loading="lazy"
           >
-          <span class="scroll-tag new">New</span>
+        
         </div>
         <figcaption>
           <h4>Essential Oils</h4>
