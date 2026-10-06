@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href="style.css"/>
+  <title>Doctormuxshrooms · Home & Site</title>
+ 
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <a href="#" class="brand">Doctormuxshrooms</a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#products">Site</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION with video ========== -->
+  <section class="hero">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="https://images.pexels.com/videos/3130284/pictures/preview-0.jpg?auto=compress&cs=tinysrgb&w=1920"
+    >
+      <source src="https://www.pexels.com/download/video/6132598/" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Doctormuxshrooms</h1>
+      <h3>Mushrooms &amp; Plant Remedies</h3>
+      <div class="hero-buttons">
+        <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="hero-button telegram">Connect to Telegram</a>
+       
+    </div>
+  </section>
+
+  <!-- ========== PRODUCT SECTION ========== -->
+  <section class="product-section" id="products">
+    <div class="section-header">
+      <h2>Featured Collection</h2>
+      <p>Browse our latest products and start a conversation on the platform you love.</p>
+    </div>
+
+    <!-- Image gallery -->
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=447,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-02-at-13.15.35-OCh6mOVpJAIWyl0v.jpeg" alt="" loading="lazy">
+        <span class="label">Psilocybin Mushrooms</span>
+        <button class="buy-btn" data-product="Psilocybin MushroomsPenis Envy" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=447,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-03-at-18.01.39-3-qoOpq2BJBbmy6vhr.jpeg" alt="Smart Watch" loading="lazy">
+        <span class="label">Penis Envy</span>
+        <button class="buy-btn" data-product="Penis Envy" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://pictureurl.com/api/storage/file?key=u%2Fanon%2F30a82546-20c7-4ecc-8909-941510872fa3-IMG-20261006-WA0062.jpg" alt="Portable Speaker" loading="lazy">
+        <span class="label">dmt</span>
+        <button class="buy-btn" data-product="dmt" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://pictureurl.com/api/storage/file?key=u%2Fanon%2F5d2d6a7c-1d28-4ef3-af88-bc8828f8fafb-IMG-20261006-WA0058.jpg" alt="Sunglasses" loading="lazy">
+        <span class="label">Penis Envy</span>
+        <button class="buy-btn" data-product="Penis Envy" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://pictureurl.com/api/storage/file?key=u%2Fanon%2F19676a3e-b1b8-4611-a026-dda283282adb-IMG-20261006-WA0057.jpg" alt="Backpack" loading="lazy">
+        <span class="label">Psilocybin Mushrooms</span>
+        <button class="buy-btn" data-product="Psilocybin Mushrooms" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://pictureurl.com/api/storage/file?key=u%2Fanon%2Ff3e5f141-55f9-4a4c-b17f-1775b4655192-IMG-20261006-WA0056.jpg" alt="Sneakers" loading="lazy">
+        <span class="label">Golden Teacher</span>
+        <button class="buy-btn" data-product="Golden Teacher" data-buy="true">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- CTA that opens the popup -->
+    <div class="cta-wrapper">
+      <button class="btn-primary" id="openModalBtn">
+        💬 Choose Communication Platform
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== POPUP / MODAL (General) ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+      <h3 id="modalTitle">How would you like to connect?</h3>
+      <p>Pick a platform and we'll take you there to chat about our products.</p>
+
+      <div class="options">
+        <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
+          <span class="icon telegram">✈️</span>
+          <span class="text">
+            <span>Telegram</span>
+            <small>Fast, secure messaging</small>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== BUY MODAL (Product-specific) ========== -->
+  <div class="modal-overlay" id="buyModalOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="buyModalTitle">
+      <button class="modal-close" id="closeBuyModalBtn" aria-label="Close modal">&times;</button>
+      <h3 id="buyModalTitle">How would you like to buy?</h3>
+      <p id="buyModalText">Choose a platform to complete your purchase.</p>
+
+      <div class="options">
+        <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram" data-buy-option="true">
+          <span class="icon telegram">✈️</span>
+          <span class="text">
+            <span>Buy via Telegram</span>
+            <small>Fast, secure checkout</small>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+   <!-- ============================================================
+       WHY CHOOSE SECTION
+  ============================================================ -->
+  <section class="why-choose" id="why-choose">
+    <div class="why-choose-header">
+      <h2>Why Choose Us</h2>
+      <p>Discover what makes Doctormuxshrooms the trusted choice for natural remedies and quality products.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Card 1: Premium Quality -->
+      <div class="card">
+        <div class="card-icon blue">🌿</div>
+        <h3>Premium Quality</h3>
+        <p>We source only the finest organic mushrooms and plant-based ingredients. Every product is carefully tested and handpicked to ensure purity, potency, and effectiveness.</p>
+      
+      </div>
+
+      <!-- Card 2: Natural & Safe -->
+      <div class="card">
+        <div class="card-icon green">🍄</div>
+        <h3>100% Natural &amp; Safe</h3>
+        <p>No chemicals, no additives, no shortcuts. Our remedies are crafted using traditional methods combined with modern science — safe for you and your family.</p>
+      
+      </div>
+
+      <!-- Card 3: Fast Support -->
+      <div class="card">
+        <div class="card-icon amber">💬</div>
+        <h3>Fast &amp; Friendly Support</h3>
+        <p>Have questions? Reach us instantly on Telegram. We're here to guide you through every step — from choosing the right remedy to after-purchase care.</p>
+      
+      </div>
+
+    </div>
+  </section>
+
+   <!-- ============================================================
+       PREMIUM BANNER SECTION
+  ============================================================ -->
+  <section class="premium-banner">
+    <!-- Decorative background shapes -->
+    <div class="banner-shape banner-shape-1"></div>
+    <div class="banner-shape banner-shape-2"></div>
+    <div class="banner-shape banner-shape-3"></div>
+
+    <div class="banner-inner">
+      <!-- Left: Text content -->
+      <div class="banner-text">
+        <span class="banner-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Trusted by 10,000+ customers
+        </span>
+
+        <h2 class="banner-title">
+          More <span class="highlight">High-Quality</span> Products &amp; Trusted Reviews
+        </h2>
+
+        <p class="banner-desc">
+          We take pride in offering only the highest quality plant and fungi remedies —
+          rigorously tested and thoroughly reviewed by our loyal customers.
+        </p>
+
+        <div class="banner-stats">
+          <div class="stat">
+            <span class="stat-number">4.9</span>
+            <span class="stat-label">Average Rating</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Natural Remedies</span>
+          </div>
+        </div>
+
+        <div class="banner-actions">
+          <a href="#products" class="banner-btn primary">Shop Collection</a>
+        </div>
+      </div>
+
+      <!-- Right: Featured review card -->
+      <div class="banner-review">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+         "The best remedy for anxiety and depression I have ever tried. I've ordered multiple times and will continue to do so."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div class="review-meta">
+              <span class="review-name">Debbie O.</span>
+              <span class="review-verified">✓ Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="banner-review">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+         "These Golden Teacher mushrooms were absolutely perfect! Fresh, well-dehydrated, and delivered promptly. Highly recommend!"
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">H</div>
+            <div class="review-meta">
+              <span class="review-name">Justin Morgan</span>
+              <span class="review-verified">✓ Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="banner-review">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+          "Incredible selection of psychedelics with thorough testing and quality assurance. I trust that everything is safe and top quality"
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div class="review-meta">
+              <span class="review-name">Luna Roland</span>
+              <span class="review-verified">✓ Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCROLLABLE IMAGE COLLECTION
+  ============================================================ -->
+  <section class="image-collection" id="products">
+    <div class="collection-header">
+      <h3>Explore Our Collection</h3>
+      <p>Swipe or scroll horizontally to browse our finest remedies</p>
+    </div>
+
+    <div class="scroll-track">
+
+      <!-- Card 1 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=800&q=80"
+            alt="Organic Reishi Mushrooms"
+            loading="lazy"
+          >
+          <span class="scroll-tag">Best Seller</span>
+        </div>
+        <figcaption>
+          <h4>Organic Reishi</h4>
+          <p>Immune support &amp; relaxation</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 2 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=800&q=80"
+            alt="Herbal Tea Blend"
+            loading="lazy"
+          >
+          <span class="scroll-tag new">New</span>
+        </div>
+        <figcaption>
+          <h4>Herbal Tea Blend</h4>
+          <p>Calming botanical infusion</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 3 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&q=80"
+            alt="Lion's Mane Extract"
+            loading="lazy"
+          >
+          <span class="scroll-tag">Popular</span>
+        </div>
+        <figcaption>
+          <h4>Lion's Mane</h4>
+          <p>Focus &amp; cognitive clarity</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 4 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=800&q=80"
+            alt="Chaga Mushroom Powder"
+            loading="lazy"
+          >
+        </div>
+        <figcaption>
+          <h4>Chaga Powder</h4>
+          <p>Antioxidant powerhouse</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 5 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=800&q=80"
+            alt="Dried Lavender Bundle"
+            loading="lazy"
+          >
+          <span class="scroll-tag">Organic</span>
+        </div>
+        <figcaption>
+          <h4>Lavender Bundle</h4>
+          <p>Stress relief &amp; sleep</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 6 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80"
+            alt="Turmeric Root"
+            loading="lazy"
+          >
+        </div>
+        <figcaption>
+          <h4>Turmeric Root</h4>
+          <p>Anti-inflammatory support</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 7 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80"
+            alt="Natural Essential Oil"
+            loading="lazy"
+          >
+          <span class="scroll-tag new">New</span>
+        </div>
+        <figcaption>
+          <h4>Essential Oils</h4>
+          <p>Pure aromatic therapy</p>
+        </figcaption>
+      </figure>
+
+      <!-- Card 8 -->
+      <figure class="scroll-card">
+        <div class="scroll-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80"
+            alt="Green Tea Leaves"
+            loading="lazy"
+          >
+        </div>
+        <figcaption>
+          <h4>Green Tea Leaves</h4>
+          <p>Detox &amp; metabolism boost</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+    <section class="product-section" id="products">
+    <div class="section-header">
+      <h2>More From High</h2>
+    </div>
+
+    <!-- Image gallery -->
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=733,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-02-at-13.16.09-YEoRV7xbfKtaCvAR.jpeg" alt="" loading="lazy">
+        <span class="label">Tinctures</span>
+        <button class="buy-btn" data-product="Tinctures" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=733,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-02-at-13.18.38-wCw13eYPwg9B9MaW.jpeg" alt="Smart Watch" loading="lazy">
+        <span class="label">Chocolate Bars</span>
+        <button class="buy-btn" data-product="Chocolate Bars" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=733,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-02-at-13.20.39-o52Uvi0O8sEE7LCR.jpeg" alt="Portable Speaker" loading="lazy">
+        <span class="label">LSD</span>
+        <button class="buy-btn" data-product="LSD" data-buy="true">Buy Now</button>
+      </div>
+      <div class="gallery-item">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=733,fit=crop/eG3KNzalTgqvPDZa/whatsapp-image-2025-05-02-at-13.19.04-UVzoHaMQA4HXwk28.jpeg" alt="Lions Mane" loading="lazy">
+        <span class="label">Lions Mane</span>
+        <button class="buy-btn" data-product="Lions Mane" data-buy="true">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GET IN TOUCH BANNER
+  ============================================================ -->
+  <section class="get-in-touch">
+    <!-- Decorative background layers -->
+    <div class="git-bg-grid"></div>
+    <div class="git-orb git-orb-1"></div>
+    <div class="git-orb git-orb-2"></div>
+    <div class="git-orb git-orb-3"></div>
+
+    <div class="git-inner">
+      <!-- Icon badge -->
+      <div class="git-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21.5 3.5L2.5 11L9.5 13.5L12 20.5L21.5 3.5Z" 
+                stroke="currentColor" 
+                stroke-width="1.8" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+          <path d="M9.5 13.5L21.5 3.5" 
+                stroke="currentColor" 
+                stroke-width="1.8" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="git-title">Get in Touch</h2>
+
+      <!-- Subtext -->
+      <p class="git-desc">
+        Have a question about our remedies or want to place a custom order?
+        Message us directly on Telegram — we reply within minutes.
+      </p>
+
+      <!-- Single CTA -->
+      <a 
+        href="https://t.me/yourusername" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="git-btn"
+      >
+        <svg class="git-btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.5 3.5L2.5 11L9.5 13.5L12 20.5L21.5 3.5Z"/>
+        </svg>
+        <span>Chat on Telegram</span>
+        <svg class="git-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">Opening Telegram…</div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    &copy; 2025 Doctormuxshrooms. All rights reserved.
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    (function () {
+      /* ---------- GENERAL MODAL ---------- */
+      const overlay = document.getElementById('modalOverlay');
+      const openBtn = document.getElementById('openModalBtn');
+      const closeBtn = document.getElementById('closeModalBtn');
+
+      /* ---------- BUY MODAL ---------- */
+      const buyOverlay = document.getElementById('buyModalOverlay');
+      const closeBuyBtn = document.getElementById('closeBuyModalBtn');
+      const buyModalText = document.getElementById('buyModalText');
+      const buyBtns = document.querySelectorAll('.buy-btn');
+
+      /* ---------- SHARED ---------- */
+      const toast = document.getElementById('toast');
+      const optionBtns = document.querySelectorAll('.option-btn');
+
+      let toastTimer = null;
+
+      /* ===== HELPERS ===== */
+      function showToast(message) {
+        if (toastTimer) clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.classList.add('show');
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2800);
+      }
+
+      function openModal(modalEl) {
+        modalEl.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modalEl) {
+        modalEl.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      /* ===== GENERAL MODAL EVENTS ===== */
+      openBtn.addEventListener('click', function () {
+        openModal(overlay);
+      });
+
+      closeBtn.addEventListener('click', function () {
+        closeModal(overlay);
+      });
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) {
+          closeModal(overlay);
+        }
+      });
+
+      /* ===== BUY MODAL EVENTS ===== */
+      buyBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation(); // prevent parent gallery-item click
+          const product = this.getAttribute('data-product') || 'this product';
+          buyModalText.textContent = 'Choose a platform to buy "' + product + '".';
+          openModal(buyOverlay);
+        });
+      });
+
+      closeBuyBtn.addEventListener('click', function () {
+        closeModal(buyOverlay);
+      });
+
+      buyOverlay.addEventListener('click', function (e) {
+        if (e.target === buyOverlay) {
+          closeModal(buyOverlay);
+        }
+      });
+
+      /* ===== ESCAPE KEY ===== */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          if (overlay.classList.contains('active')) closeModal(overlay);
+          if (buyOverlay.classList.contains('active')) closeModal(buyOverlay);
+        }
+      });
+
+      /* ===== OPTION CLICKS (both modals) ===== */
+      optionBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const platform = this.getAttribute('data-platform') || 'platform';
+          const isBuy = this.hasAttribute('data-buy-option');
+          showToast(isBuy ? `Opening ${platform} to buy…` : `Opening ${platform}…`);
+
+          setTimeout(function () {
+            if (overlay.classList.contains('active')) closeModal(overlay);
+            if (buyOverlay.classList.contains('active')) closeModal(buyOverlay);
+          }, 350);
+        });
+      });
+
+      /* ===== LIGHTWEIGHT FOCUS TRAP (both modals) ===== */
+      [overlay, buyOverlay].forEach(function (modalOverlay) {
+        modalOverlay.addEventListener('keydown', function (e) {
+          if (e.key === 'Tab' && modalOverlay.classList.contains('active')) {
+            const focusable = modalOverlay.querySelectorAll('button, a[href]');
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
