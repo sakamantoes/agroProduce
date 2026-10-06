@@ -10,14 +10,23 @@
 </head>
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar">
-    <a href="#" class="brand">Doctormaxhsrooms</a>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#products">Site</a>
-    </div>
-  </nav>
+ <!-- ========== NAVIGATION ========== -->
+<nav class="navbar">
+  <a href="#" class="brand">Doctormaxhsrooms</a>
+
+  <!-- Hamburger button (visible only on small screens) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+  </button>
+
+  <!-- Navigation links -->
+  <div class="nav-links" id="navLinks">
+    <a href="#">Home</a>
+    <a href="#products">Site</a>
+  </div>
+</nav>
 
   <!-- ========== HERO SECTION with video ========== -->
   <section class="hero">
@@ -108,28 +117,82 @@
             <small>Fast, secure messaging</small>
           </span>
         </a>
+         <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
+          <span class="icon telegram">✈️</span>
+          <span class="text">
+            <span>Tikto</span>
+            <small>Fast, secure messaging</small>
+          </span>
+        </a>
+         <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram">
+          <span class="icon telegram">✈️</span>
+          <span class="text">
+            <span>Email</span>
+            <small>Fast, secure messaging</small>
+          </span>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- ========== BUY MODAL (Product-specific) ========== -->
   <div class="modal-overlay" id="buyModalOverlay">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="buyModalTitle">
-      <button class="modal-close" id="closeBuyModalBtn" aria-label="Close modal">&times;</button>
-      <h3 id="buyModalTitle">How would you like to buy?</h3>
-      <p id="buyModalText">Choose a platform to complete your purchase.</p>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="buyModalTitle">
+    <button class="modal-close" id="closeBuyModalBtn" aria-label="Close modal">&times;</button>
+    <h3 id="buyModalTitle">How would you like to buy?</h3>
+    <p id="buyModalText">Choose a platform to complete your purchase.</p>
 
-      <div class="options">
-        <a href="https://t.me/DOCTORMAXSHROOMS" target="_blank" rel="noopener noreferrer" class="option-btn" data-platform="Telegram" data-buy-option="true">
-          <span class="icon telegram">✈️</span>
-          <span class="text">
-            <span>Buy via Telegram</span>
-            <small>Fast, secure checkout</small>
-          </span>
-        </a>
-      </div>
+    <div class="options">
+
+      <!-- ===== Telegram ===== -->
+      <a 
+        href="https://t.me/DOCTORMAXSHROOMS" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="option-btn" 
+        data-platform="Telegram" 
+        data-buy-option="true"
+      >
+        <span class="icon telegram">✈️</span>
+        <span class="text">
+          <span>Buy via Telegram</span>
+          <small>Fast, secure checkout</small>
+        </span>
+      </a>
+
+      <!-- ===== TikTok ===== -->
+      <a 
+        href="https://www.tiktok.com/@doctormaxshrooms" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="option-btn" 
+        data-platform="TikTok" 
+        data-buy-option="true"
+      >
+        <span class="icon tiktok">🎵</span>
+        <span class="text">
+          <span>Buy via TikTok</span>
+          <small>Shop through TikTok</small>
+        </span>
+      </a>
+
+      <!-- ===== Email ===== -->
+      <a 
+        href="mailto:doctormaxshrooms@gmail.com?subject=Order%20Inquiry&body=Hi%2C%20I%27d%20like%20to%20place%20an%20order%20for..." 
+        class="option-btn" 
+        data-platform="Email" 
+        data-buy-option="true"
+      >
+        <span class="icon email">✉️</span>
+        <span class="text">
+          <span>Buy via Email</span>
+          <small>Send us your order details</small>
+        </span>
+      </a>
+
     </div>
   </div>
+</div>
 
    <!-- ============================================================
        WHY CHOOSE SECTION
@@ -500,120 +563,211 @@
 
   <!-- ========== JAVASCRIPT ========== -->
   <script>
-    (function () {
-      /* ---------- GENERAL MODAL ---------- */
-      const overlay = document.getElementById('modalOverlay');
-      const openBtn = document.getElementById('openModalBtn');
-      const closeBtn = document.getElementById('closeModalBtn');
+  
+     /* ============================================================
+   JAVASCRIPT — All site interactions
+   ------------------------------------------------------------
+   1. NAVBAR (mobile hamburger menu)
+   2. MODALS (general + buy)
+   3. TOAST notifications
+   4. Keyboard & focus management
+   ============================================================ */
 
-      /* ---------- BUY MODAL ---------- */
-      const buyOverlay = document.getElementById('buyModalOverlay');
-      const closeBuyBtn = document.getElementById('closeBuyModalBtn');
-      const buyModalText = document.getElementById('buyModalText');
-      const buyBtns = document.querySelectorAll('.buy-btn');
+(function () {
+  'use strict';
 
-      /* ---------- SHARED ---------- */
-      const toast = document.getElementById('toast');
-      const optionBtns = document.querySelectorAll('.option-btn');
+  /* ============================================================
+     1. NAVBAR — Mobile hamburger menu
+     ============================================================ */
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
 
-      let toastTimer = null;
+  if (menuToggle && navLinks) {
+    // Toggle menu open/close
+    menuToggle.addEventListener('click', function () {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    });
 
-      /* ===== HELPERS ===== */
-      function showToast(message) {
-        if (toastTimer) clearTimeout(toastTimer);
-        toast.textContent = message;
-        toast.classList.add('show');
-        toastTimer = setTimeout(() => {
-          toast.classList.remove('show');
-        }, 2800);
-      }
-
-      function openModal(modalEl) {
-        modalEl.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal(modalEl) {
-        modalEl.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      /* ===== GENERAL MODAL EVENTS ===== */
-      openBtn.addEventListener('click', function () {
-        openModal(overlay);
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
       });
+    });
 
-      closeBtn.addEventListener('click', function () {
+    // Close menu when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+
+  /* ============================================================
+     2. MODALS — General + Buy
+     ============================================================ */
+  const overlay = document.getElementById('modalOverlay');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+
+  const buyOverlay = document.getElementById('buyModalOverlay');
+  const closeBuyBtn = document.getElementById('closeBuyModalBtn');
+  const buyModalText = document.getElementById('buyModalText');
+  const buyBtns = document.querySelectorAll('.buy-btn');
+
+
+  /* ============================================================
+     3. TOAST + SHARED ELEMENTS
+     ============================================================ */
+  const toast = document.getElementById('toast');
+  const optionBtns = document.querySelectorAll('.option-btn');
+
+  let toastTimer = null;
+
+  /* ----- Helpers ----- */
+  function showToast(message) {
+    if (!toast) return;
+    if (toastTimer) clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  function openModal(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+
+  /* ============================================================
+     4. GENERAL MODAL EVENTS
+     ============================================================ */
+  if (openBtn && overlay) {
+    openBtn.addEventListener('click', function () {
+      openModal(overlay);
+    });
+  }
+
+  if (closeBtn && overlay) {
+    closeBtn.addEventListener('click', function () {
+      closeModal(overlay);
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) {
         closeModal(overlay);
-      });
+      }
+    });
+  }
 
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) {
-          closeModal(overlay);
-        }
-      });
 
-      /* ===== BUY MODAL EVENTS ===== */
-      buyBtns.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation(); // prevent parent gallery-item click
-          const product = this.getAttribute('data-product') || 'this product';
-          buyModalText.textContent = 'Choose a platform to buy "' + product + '".';
-          openModal(buyOverlay);
-        });
-      });
+  /* ============================================================
+     5. BUY MODAL EVENTS
+     ============================================================ */
+  buyBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation(); // prevent parent gallery-item click
+      const product = this.getAttribute('data-product') || 'this product';
+      if (buyModalText) {
+        buyModalText.textContent = 'Choose a platform to buy "' + product + '".';
+      }
+      openModal(buyOverlay);
+    });
+  });
 
-      closeBuyBtn.addEventListener('click', function () {
+  if (closeBuyBtn && buyOverlay) {
+    closeBuyBtn.addEventListener('click', function () {
+      closeModal(buyOverlay);
+    });
+  }
+
+  if (buyOverlay) {
+    buyOverlay.addEventListener('click', function (e) {
+      if (e.target === buyOverlay) {
         closeModal(buyOverlay);
-      });
+      }
+    });
+  }
 
-      buyOverlay.addEventListener('click', function (e) {
-        if (e.target === buyOverlay) {
-          closeModal(buyOverlay);
+
+  /* ============================================================
+     6. ESCAPE KEY — Close any open modal
+     ============================================================ */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (overlay && overlay.classList.contains('active')) closeModal(overlay);
+      if (buyOverlay && buyOverlay.classList.contains('active')) closeModal(buyOverlay);
+    }
+  });
+
+
+  /* ============================================================
+     7. OPTION CLICKS (Telegram / TikTok in both modals)
+     ============================================================ */
+  optionBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const platform = this.getAttribute('data-platform') || 'platform';
+      const isBuy = this.hasAttribute('data-buy-option');
+      showToast(isBuy ? 'Opening ' + platform + ' to buy…' : 'Opening ' + platform + '…');
+
+      setTimeout(function () {
+        if (overlay && overlay.classList.contains('active')) closeModal(overlay);
+        if (buyOverlay && buyOverlay.classList.contains('active')) closeModal(buyOverlay);
+      }, 350);
+    });
+  });
+
+
+  /* ============================================================
+     8. LIGHTWEIGHT FOCUS TRAP (both modals)
+     ============================================================ */
+  [overlay, buyOverlay].forEach(function (modalOverlay) {
+    if (!modalOverlay) return;
+    modalOverlay.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' && modalOverlay.classList.contains('active')) {
+        const focusable = modalOverlay.querySelectorAll('button, a[href]');
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
         }
-      });
+      }
+    });
+  });
 
-      /* ===== ESCAPE KEY ===== */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          if (overlay.classList.contains('active')) closeModal(overlay);
-          if (buyOverlay.classList.contains('active')) closeModal(buyOverlay);
-        }
-      });
-
-      /* ===== OPTION CLICKS (both modals) ===== */
-      optionBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const platform = this.getAttribute('data-platform') || 'platform';
-          const isBuy = this.hasAttribute('data-buy-option');
-          showToast(isBuy ? `Opening ${platform} to buy…` : `Opening ${platform}…`);
-
-          setTimeout(function () {
-            if (overlay.classList.contains('active')) closeModal(overlay);
-            if (buyOverlay.classList.contains('active')) closeModal(buyOverlay);
-          }, 350);
-        });
-      });
-
-      /* ===== LIGHTWEIGHT FOCUS TRAP (both modals) ===== */
-      [overlay, buyOverlay].forEach(function (modalOverlay) {
-        modalOverlay.addEventListener('keydown', function (e) {
-          if (e.key === 'Tab' && modalOverlay.classList.contains('active')) {
-            const focusable = modalOverlay.querySelectorAll('button, a[href]');
-            if (focusable.length === 0) return;
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-            if (e.shiftKey && document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          }
-        });
-      });
-    })();
+})();
   </script>
 </body>
 </html>
